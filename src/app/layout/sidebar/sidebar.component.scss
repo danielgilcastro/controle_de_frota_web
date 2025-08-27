@@ -1,0 +1,29 @@
+
+
+/* Estilos do Sidebar (colapsável) */
+@import '../../../styles/_variables.scss';
+
+.sidebar {
+	background: $color-surface;
+	color: $color-text;
+	width: 220px;
+	min-height: 100vh;
+	border-right: 1px solid $color-primary;
+	padding: 2rem 1rem;
+	transition: width 200ms ease, padding 200ms ease, background 200ms ease;
+}
+
+.sidebar__item {
+	color: $color-text;
+	padding: 0.75rem 1rem;
+	border-radius: 4px;
+	margin-bottom: 0.5rem;
+	transition: background 0.2s, color 0.2s;
+	cursor: pointer;
+}
+.sidebar__item:hover, .sidebar__item.active {
+	background: $color-accent;
+	color: $color-background;
+}
+
+/* estado recolhido removido - funcionalidade desfeita */
