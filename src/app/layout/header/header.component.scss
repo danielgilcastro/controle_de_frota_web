@@ -1,0 +1,45 @@
+
+@import '../../../styles/_variables.scss';
+
+.header {
+	background: $color-primary;
+	color: $color-background;
+	border-bottom: 2px solid $color-accent;
+	padding: 1rem 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header__logo {
+	color: $color-accent;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.header__nav a {
+	color: $color-background;
+	margin-left: 1.5rem;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+.header__nav a:hover {
+	color: $color-accent;
+}
+
+.header__actions {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.search-input {
+	width: 220px;
+	padding: 0.45rem 0.6rem;
+	border-radius: $radius-sm;
+	border: 1px solid $color-border;
+	background: lighten($color-primary, 6%);
+	color: $color-background;
+}
+.search-input::placeholder { color: rgba(255,255,255,0.7); }
+.search-input:focus { border-color: $color-accent; box-shadow: none; }
