@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { SidebarService } from './sidebar.service';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
