@@ -1,117 +1,142 @@
-/* Header uses CSS custom properties from :root (defined in global variables) */
+// Estilo do header integrado ao CSS global
+
 .header {
-  background: var(--color-primary, #0A2A3A);
-  color: white;
-  border-bottom: 2px solid var(--color-accent, #00B4D8);
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	width: 100%;
+	background: var(--color-surface);
+	color: var(--color-text);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5rem 2rem;
+	box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+	border-bottom: 1px solid var(--color-border);
+	position: relative;
+	z-index: 10;
+
+	&.search-open {
+		.search-container {
+			display: flex !important;
+		}
+	}
 }
 
 .header__logo {
-  color: var(--color-accent, #00B4D8);
-  font-weight: bold;
-  font-size: 1.5rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	letter-spacing: 1px;
+	color: var(--color-success);
 }
 
-.btn-ghost {
-  background: transparent;
-  color: white;
-  border: none;
-  font-size: 1.25rem;
-  padding: 0.25rem 0.5rem;
-  cursor: pointer;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--color-accent, #00B4D8);
-  }
+.header__nav {
+	display: flex;
+	gap: 2rem;
+	a {
+		color: var(--color-text-light);
+		text-decoration: none;
+		font-weight: 500;
+		transition: color 0.2s;
+		&:hover {
+			color: var(--color-success);
+		}
+	}
 }
-
-  .header__nav a {
-    color: white;
-    margin-left: 1.5rem;
-    text-decoration: none;
-    transition: color 0.2s;
-  
-    &:hover {
-      color: var(--color-accent, #00B4D8);
-    }
-  }
 
 .header__actions {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }
 
-.mobile-search-toggle { display: none; }
-
-.search-input {
-  width: 220px;
-  padding: 0.45rem 0.6rem;
-  border-radius: var(--radius-sm, 6px);
-  border: 1px solid var(--color-border, #E2E8F0);
-  background: var(--color-primary-light, #1A3A4A);
-  color: white;
-
-  &::placeholder { color: rgba(255, 255, 255, 0.7); }
-
-  &:focus {
-    outline: none;
-    border-color: var(--color-accent, #00B4D8);
-    box-shadow: 0 0 0 2px rgba(0,180,216,0.2);
-  }
+.btn {
+	background: none;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
+	&.btn-ghost {
+		color: var(--color-text-light);
+		&:hover {
+			background: var(--color-border);
+			color: var(--color-success);
+		}
+	}
+	&.btn-primary {
+		background: var(--color-success);
+		color: #fff;
+		font-weight: 600;
+		&:hover {
+			background: var(--color-success-light);
+			color: var(--color-text);
+		}
+	}
 }
 
-.search-container { display: inline-flex; align-items: center; gap: 0.25rem; }
-.search-submit { padding: 0.3rem 0.45rem; background: rgba(255,255,255,0.06); color: white; border-radius: var(--radius-sm, 6px); }
-
-/* custom clear button inside input */
-.search-container { position: relative; }
-.search-clear-custom {
-  position: absolute;
-  right: 2.8rem; /* leave place for submit button on desktop */
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0.15rem 0.4rem;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.03);
-  color: white;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.search-container {
+	display: flex;
+	align-items: center;
+	background: var(--color-background);
+	border: 1px solid var(--color-border);
+	border-radius: 4px;
+	padding: 0 0.5rem;
+	margin-right: 1rem;
+	transition: box-shadow 0.2s;
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.03);
+	.search-input {
+		border: none;
+		outline: none;
+		background: transparent;
+		padding: 0.5rem 0.5rem 0.5rem 0;
+		font-size: 1rem;
+		color: var(--color-text);
+		width: 160px;
+		&::placeholder {
+			color: var(--color-muted);
+		}
+	}
+	.search-clear-custom, .search-submit {
+		background: none;
+		border: none;
+		color: var(--color-text-light);
+		font-size: 1.1rem;
+		cursor: pointer;
+		padding: 0 0.3rem;
+		&:hover {
+			color: var(--color-danger);
+		}
+	}
 }
 
-/* hide native clear to avoid double-clear visuals */
-.search-input::-webkit-search-cancel-button { display: none; }
-.search-input::-ms-clear { display: none; }
-
-/* enable native clear button in WebKit browsers (it will appear inside the input) */
-.search-input::-webkit-search-cancel-button { -webkit-appearance: searchfield-cancel-button; }
-.search-input::-ms-clear { display: block; }
-
-@media (max-width: 768px) {
-  .header {
-    padding: 0.5rem 1rem;
-    position: relative;
-    z-index: 9999; /* ensure header and toggle button sit above mobile backdrop */
-  }
-  .header__nav { display: none; }
-  .search-input { width: 140px; display: none; }
-  .mobile-search-toggle { display: inline-flex; }
-  .search-submit { display: none; }
-  /* when header has .search-open show the input */
-  .header.search-open .search-input { display: inline-block; }
-  .header__logo { font-size: 1.1rem; }
+// Responsividade
+@media (max-width: 900px) {
+	.header {
+		flex-direction: column;
+		align-items: stretch;
+		padding: 0.5rem 1rem;
+		.header__nav {
+			gap: 1rem;
+		}
+		.header__actions {
+			gap: 0.5rem;
+		}
+	}
 }
 
-@media (max-width: 480px) {
-  .search-input { display: none; }
-  .btn-ghost { font-size: 1rem; }
-}
-/* hide inline submit icon on small screens to avoid duplicate lupas */
-@media (max-width: 768px) {
-  .search-submit { display: none; }
+@media (max-width: 600px) {
+	.header {
+		flex-direction: column;
+		align-items: stretch;
+		.header__nav {
+			display: none;
+		}
+		.search-container {
+			display: none;
+		}
+		&.search-open .search-container {
+			display: flex !important;
+			width: 100%;
+			margin: 0.5rem 0;
+		}
+	}
 }

@@ -1,507 +1,79 @@
-// Global styles entry (stable)
-// Use the variables file that lives in `src/styles/variables.scss`
-@use 'sass:color';
-@use './styles/variables' as *;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Paleta de cores */
+:root {
+  --color-background: #FFFFFF;
+  --color-surface: #F8FAFC;
+  --color-muted: #64748B;
+  --color-border: #E2E8F0;
 
-/* Minimal reset and base tokens required by components */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  --color-success: #22C55E;
+  --color-success-light: #4ADE80;
+  --color-warning: #F59E0B;
+  --color-warning-light: #FBBF24;
+  --color-danger: #EF4444;
+  --color-danger-light: #F87171;
 
-html, body, app-root { height: 100%; font-size: $font-size-base; }
+  --color-text: #0F172A;
+  --color-text-light: #334155;
 
-body {
-  font-family: $font-family-base;
-  font-weight: $font-weight-normal;
-  line-height: $line-height-base;
-  color: $color-text;
-  background: $color-background;
-  -webkit-font-smoothing: antialiased;
+  --lightness: 80%;
+
 }
 
-/* Core card styles used by many components */
-.card { background: $color-background; border: 1px solid $color-border; border-radius: $radius-lg; }
-.card-header { padding: 1rem; border-bottom: 1px solid $color-border; background: $color-surface; }
-
-/* Small utility classes needed by layout */
-.text-muted { color: $color-muted; }
-.bg-surface { background: $color-surface; }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-// ==========================================================================
-// RESET & BASE GLOBAL
-// ==========================================================================
-*, *::before, *::after {
+/* Reset básico */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-html, body, #root, app-root {
-  height: 100%;
-  font-size: $font-size-base;
-}
-
+/* Estilos globais */
 body {
-  margin: 0;
-  font-family: $font-family-base;
-  font-weight: $font-weight-normal;
-  line-height: $line-height-base;
-  color: $color-text;
-  background: $color-background;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-// ==========================================================================
-// TIPOGRAFIA MELHORADA
-// ==========================================================================
-h1, h2, h3, h4, h5, h6 {
-  color: $color-primary;
-  margin: 0 0 $spacing-md 0;
-  font-weight: $font-weight-semibold;
-  line-height: 1.3;
-}
-
-h1 { font-size: 2.5rem; margin-bottom: $spacing-lg; }
-h2 { font-size: 2rem; margin-bottom: $spacing-md; }
-h3 { font-size: 1.5rem; margin-bottom: $spacing-md; }
-h4 { font-size: 1.25rem; }
-h5 { font-size: 1.125rem; }
-h6 { font-size: 1rem; }
-
-p {
-  margin: 0 0 $spacing-md 0;
-  color: $color-text-light;
-  line-height: 1.7;
-}
-
-// Links elegantes
-a {
-  color: $color-secondary;
-  text-decoration: none;
-  transition: color $transition-fast;
-  font-weight: $font-weight-medium;
-  
-  &:hover {
-    color: $color-accent;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-}
-
-// ==========================================================================
-// BOTÕES ELEGANTES & MODERNOS
-// ==========================================================================
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: $spacing-sm;
-  padding: 0.75rem 1.5rem;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
-  line-height: 1;
-  border-radius: $radius-md;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: all $transition-normal;
-  user-select: none;
-  text-decoration: none;
-  font-family: inherit;
-  position: relative;
-  overflow: hidden;
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba($color-secondary, 0.2);
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none !important;
-  }
-
-  &:active {
-    transform: translateY(1px);
-  }
-}
-
-// Variantes de botão com gradientes suaves
-.btn-primary {
-  background: linear-gradient(135deg, $color-secondary, $color-accent);
-  color: white;
-  border-color: $color-secondary;
-  
-  &:hover {
-    background: linear-gradient(135deg, $color-secondary-light, $color-accent-light);
-    transform: translateY(-1px);
-    box-shadow: $shadow-md;
-  }
-}
-
-.btn-secondary {
-  background: $color-primary;
-  color: white;
-  
-  &:hover {
-    background: $color-primary-light;
-    transform: translateY(-1px);
-    box-shadow: $shadow-md;
-  }
-}
-
-.btn-outline {
-  background: transparent;
-  color: $color-primary;
-  border-color: $color-border;
-  
-  &:hover {
-    background: $color-primary;
-    color: white;
-    border-color: $color-primary;
-  }
-}
-
-.btn-ghost {
-  background: transparent;
-  color: $color-primary;
-  border-color: transparent;
-  
-  &:hover {
-    background: rgba($color-primary, 0.1);
-    color: $color-primary;
-  }
-}
-
-// Botões de estado
-.btn-success {
-  background: $color-success;
-  color: white;
-  
-  &:hover {
-    background: $color-success-light;
-    transform: translateY(-1px);
-  }
-}
-
-.btn-danger {
-  background: $color-danger;
-  color: white;
-  
-  &:hover {
-    background: $color-danger-light;
-    transform: translateY(-1px);
-  }
-}
-
-// Tamanhos
-.btn-sm {
-  padding: 0.5rem 1rem;
-  font-size: $font-size-xs;
-}
-
-.btn-lg {
-  padding: 1rem 2rem;
-  font-size: $font-size-md;
-}
-
-.btn-block {
-  width: 100%;
-  display: flex;
-}
-
-// ==========================================================================
-// INPUTS MODERNOS & ACESSÍVEIS
-// ==========================================================================
-.input {
-  width: 100%;
-  padding: 0.875rem 1rem;
-  font-family: inherit;
-  font-size: $font-size-sm;
-  border: 2px solid $color-border;
-  border-radius: $radius-md;
-  background: $color-background;
-  color: $color-text;
-  transition: all $transition-fast;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.5;
-
-  &::placeholder {
-    color: $color-muted;
-    font-weight: $font-weight-normal;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: $color-secondary;
-    box-shadow: 0 0 0 3px rgba($color-secondary, 0.1);
-    transform: translateY(-1px);
-  }
-
-  &:hover {
-    border-color: color.adjust($color-border, $lightness: -10%);
-  }
+  min-height: 100vh;
 }
 
-// Estados
-.input-error {
-  border-color: $color-danger;
-  box-shadow: 0 0 0 3px rgba($color-danger, 0.1);
-  
-  &:focus {
-    border-color: $color-danger;
-    box-shadow: 0 0 0 3px rgba($color-danger, 0.2);
-  }
+/* Utilitários */
+.text-muted {
+  color: var(--color-muted);
 }
 
-.input-success {
-  border-color: $color-success;
-  box-shadow: 0 0 0 3px rgba($color-success, 0.1);
+.text-light {
+  color: var(--color-text-light);
 }
 
-.input-disabled {
-  background: $color-surface;
-  color: $color-muted;
-  cursor: not-allowed;
-  
-  &:hover {
-    border-color: $color-border;
-  }
+.bg-surface {
+  background: var(--color-surface);
 }
 
-// Tamanhos
-.input-sm {
-  padding: 0.625rem 0.75rem;
-  font-size: $font-size-xs;
+.border {
+  border: 1px solid var(--color-border);
 }
 
-.input-lg {
-  padding: 1rem 1.25rem;
-  font-size: $font-size-md;
+.success {
+  color: var(--color-success);
 }
 
-// ==========================================================================
-// FORMULÁRIOS ELEGANTES
-// ==========================================================================
-.form-group {
-  margin-bottom: $spacing-lg;
-  position: relative;
+.success-light {
+  color: var(--color-success-light);
 }
 
-.form-label {
-  display: block;
-  margin-bottom: $spacing-sm;
-  font-weight: $font-weight-semibold;
-  color: $color-primary;
-  font-size: $font-size-sm;
+.warning {
+  color: var(--color-warning);
 }
 
-.form-help {
-  font-size: $font-size-xs;
-  color: $color-muted;
-  margin-top: $spacing-xs;
-  line-height: 1.4;
+.warning-light {
+  color: var(--color-warning-light);
 }
 
-.form-error {
-  color: $color-danger;
-  font-size: $font-size-xs;
-  margin-top: $spacing-xs;
-  font-weight: $font-weight-medium;
+.danger {
+  color: var(--color-danger);
 }
 
-// ==========================================================================
-// CARDS MODERNOS COM SOMBRAS
-// ==========================================================================
-.card {
-  background: $color-background;
-  border: 1px solid $color-border;
-  border-radius: $radius-lg;
-  box-shadow: $shadow-sm;
-  overflow: hidden;
-  transition: all $transition-normal;
-  
-  &:hover {
-    box-shadow: $shadow-md;
-    transform: translateY(-2px);
-  }
-}
-
-.card-header {
-  padding: $spacing-lg;
-  border-bottom: 1px solid $color-border;
-  background: $color-surface;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-lg;
-}
-
-.card-body {
-  padding: $spacing-lg;
-  
-  > *:last-child {
-    margin-bottom: 0;
-  }
-}
-
-// ==========================================================================
-// ALERTAS ELEGANTES (CORRIGIDO)
-// ==========================================================================
-.alert {
-  padding: $spacing-md $spacing-lg;
-  border-radius: $radius-md;
-  margin-bottom: $spacing-md;
-  color: white;
-  font-weight: $font-weight-medium;
-  border-left: 4px solid transparent;
-  box-shadow: $shadow-sm;
-  
-  &--info {
-    background: linear-gradient(135deg, $color-secondary, $color-accent);
-    border-left-color: color.adjust($color-secondary, $lightness: -10%);
-  }
-  
-  &--success {
-    background: linear-gradient(135deg, $color-success, $color-success-light);
-    border-left-color: color.adjust($color-success, $lightness: -10%);
-  }
-  
-  &--warn {
-    background: linear-gradient(135deg, $color-warning, $color-warning-light);
-    border-left-color: color.adjust($color-warning, $lightness: -10%);
-    color: #1F2937;
-  }
-  
-  &--danger {
-    background: linear-gradient(135deg, $color-danger, $color-danger-light);
-    border-left-color: color.adjust($color-danger, $lightness: -10%);
-  }
-}
-
-// ==========================================================================
-// UTILITIES & HELPER CLASSES
-// ==========================================================================
-.text-muted { color: $color-muted; }
-.text-primary { color: $color-primary; }
-.text-secondary { color: $color-secondary; }
-.text-success { color: $color-success; }
-.text-danger { color: $color-danger; }
-.text-warning { color: $color-warning; }
-
-.bg-primary { background: $color-primary; color: white; }
-.bg-secondary { background: $color-secondary; color: white; }
-.bg-surface { background: $color-surface; }
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-// Espaçamentos utilitários
-.mt-1 { margin-top: $spacing-xs; }
-.mt-2 { margin-top: $spacing-sm; }
-.mt-3 { margin-top: $spacing-md; }
-.mt-4 { margin-top: $spacing-lg; }
-
-.mb-1 { margin-bottom: $spacing-xs; }
-.mb-2 { margin-bottom: $spacing-sm; }
-.mb-3 { margin-bottom: $spacing-md; }
-.mb-4 { margin-bottom: $spacing-lg; }
-
-// ==========================================================================
-// RESPONSIVIDADE AVANÇADA
-// ==========================================================================
-@media (max-width: $breakpoint-lg) {
-  html, body {
-    font-size: 15px;
-  }
-  
-  .card {
-    border-radius: $radius-md;
-  }
-}
-
-@media (max-width: $breakpoint-md) {
-  body {
-    font-size: 14px;
-  }
-  
-  .btn {
-    padding: 0.625rem 1.25rem;
-  }
-  
-  .card-header,
-  .card-body {
-    padding: $spacing-md;
-  }
-  
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.25rem; }
-}
-
-@media (max-width: $breakpoint-sm) {
-  body {
-    font-size: 13px;
-  }
-  
-  .btn {
-    padding: 0.5rem 1rem;
-    font-size: $font-size-xs;
-  }
-  
-  .input {
-    padding: 0.75rem;
-    font-size: $font-size-xs;
-  }
-  
-  .card {
-    border-radius: $radius-sm;
-    margin: 0 $spacing-sm;
-  }
-}
-
-// ==========================================================================
-// ANIMAÇÕES & TRANSITIONS
-// ==========================================================================
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideIn {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
-.fade-in {
-  animation: fadeIn 0.5s ease-out;
-}
-
-.slide-in {
-  animation: slideIn 0.3s ease-out;
-}
-
-// ==========================================================================
-// DARK MODE READY (Preparado para modo escuro)
-// ==========================================================================
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #0F172A;
-    --color-surface: #1E293B;
-    --color-text: #F1F5F9;
-    --color-text-light: #CBD5E1;
-    --color-border: #334155;
-  }
+.danger-light {
+  color: var(--color-danger-light);
 }
