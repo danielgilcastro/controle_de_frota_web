@@ -77,18 +77,6 @@ body {
 .danger-light {
   color: var(--color-danger-light);
 }
-// Global styles entry (stable)
-// Use the variables file that lives in `src/styles/variables.scss`
-@use 'sass:color';
-@import 'variables'; // Import das variáveis (funciona devido ao includePaths no angular.json)
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-/* Minimal reset and base tokens required by components */
-*, *::before, *::after { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
-}
 
 html, body, app-root, #root { 
   height: 100%; 
