@@ -1,84 +1,122 @@
 
+@use 'sass:color';
+@use '../../../styles/variables' as *;
 
 /* Estilos do Sidebar (colapsável) */
-@import '../../../styles/_variables.scss';
-
 :host { display: block; }
 
 .sidebar {
-	background: $color-surface;
-	color: $color-text;
-	width: 220px;
-	min-height: 100vh;
-	border-right: 1px solid $color-primary;
-	padding: 2rem 1rem;
-	transition: width 200ms ease, padding 200ms ease, background 200ms ease;
+  background: var(--color-surface, #{$color-surface});
+  color: var(--color-text, #{$color-text});
+  width: 220px;
+  min-height: 100vh;
+  border-right: 1px solid $color-primary;
+  padding: 2rem 1rem;
+  transition: width 200ms ease, padding 200ms ease, background 200ms ease;
 
-	.sidebar__item {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		color: $color-text;
-		padding: 0.75rem 1rem;
-		border-radius: 4px;
-		margin-bottom: 0.5rem;
-		transition: background 0.2s, color 0.2s;
-		cursor: pointer;
-	}
-	.sidebar__item:hover, .sidebar__item.active {
-		background: $color-accent;
-		color: $color-background;
-	}
+  .sidebar__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  color: var(--color-text, #{$color-text});
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    padding: 0.9rem 1rem;
+  }
+  
+  .sidebar__item:hover, .sidebar__item.active {
+    background: var(--color-accent, #{$color-accent});
+    color: var(--color-background, #{$color-background});
+  }
 
-	/* Icon and label inside item */
-	.sidebar__icon {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 34px;
-		height: 34px;
-		background: $color-primary;
-		color: $color-background;
-		border-radius: 8px;
-		flex: 0 0 34px;
-		font-size: 16px;
-	}
-	.sidebar__label {
-		flex: 1 1 auto;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
+  /* Icon and label inside item */
+  .sidebar__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+  background: var(--color-primary, #{$color-primary});
+  color: var(--color-background, #{$color-background});
+    border-radius: 8px;
+    flex: 0 0 38px;
+    font-size: 17px;
+  }
+  
+  .sidebar__label {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .sidebar--hidden {
-	transform: translateX(-100%);
-	visibility: hidden;
-	transition: transform 220ms ease, visibility 220ms ease;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 220ms ease, visibility 220ms ease;
 }
 
 .sidebar--collapsed {
-	/* reduzir visualmente a sidebar — esconder o conteúdo do menu */
-	width: 0;
-	padding: 0;
-	overflow: hidden;
-	border-right: none;
-	background: $color-surface;
-	transition: width 200ms ease, padding 200ms ease, transform 200ms ease;
+  /* reduzir visualmente a sidebar — esconder o conteúdo do menu */
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  border-right: none;
+  background: $color-surface;
+  transition: width 200ms ease, padding 200ms ease, transform 200ms ease;
 
-	/* esconder elemento de cabeçalho e itens do menu */
-	.card-header,
-	.sidebar__item {
-		display: none !important;
-	}
+  /* esconder elemento de cabeçalho e itens do menu */
+  .card-header,
+  .sidebar__item {
+    display: none !important;
+  }
 
-	/* esconder ícone e label quando colapsado (menu deve sumir) */
-	.sidebar__icon,
-	.sidebar__label { display: none !important; }
+  /* esconder ícone e label quando colapsado (menu deve sumir) */
+  .sidebar__icon,
+  .sidebar__label { display: none !important; }
 }
 
 /* Quando colapsado, o conteúdo já é escondido pelas regras acima (display:none) */
 @media (max-width: 768px) {
-	.sidebar { position: absolute; z-index: 60; top: 0; left: 0; height: 100vh; }
-	.sidebar--hidden { transform: translateX(-100%); }
+  /* Mobile: make sidebar an overlay drawer when visible */
+  .sidebar { position: fixed; z-index: 120; top: 0; left: 0; height: 100vh; transform: translateX(-110%); transition: transform 220ms ease; }
+
+  /* When not hidden (i.e., visible) show as drawer */
+  .sidebar:not(.sidebar--hidden) {
+    transform: translateX(0);
+    width: min(320px, 78vw);
+    padding: 1.5rem 1rem;
+    box-shadow: 0 8px 20px rgba(8, 30, 40, 0.3);
+    background: $color-surface;
+  }
+
+  /* keep hidden state off-screen */
+  .sidebar--hidden { transform: translateX(-110%); visibility: hidden; }
+
+  /* Make items larger for touch */
+  .sidebar__item { padding: 0.9rem 1rem; }
+  .sidebar__icon { width: 40px; height: 40px; flex: 0 0 40px; }
+}
+
+/* wrapper and backdrop for mobile drawer */
+.sidebar-wrapper { position: relative; }
+.sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar-wrapper { position: fixed; inset: 0; z-index: 110; }
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 18, 24, 0.45);
+    z-index: 115;
+  }
+  /* ensure header/button remains above backdrop so user can toggle/close */
+  .header { z-index: 130; position: relative; }
 }
