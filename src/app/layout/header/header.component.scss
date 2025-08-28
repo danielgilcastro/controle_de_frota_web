@@ -72,6 +72,26 @@
 .search-container { display: inline-flex; align-items: center; gap: 0.25rem; }
 .search-submit { padding: 0.3rem 0.45rem; background: rgba(255,255,255,0.06); color: white; border-radius: $radius-sm; }
 
+/* custom clear button inside input */
+.search-container { position: relative; }
+.search-clear-custom {
+  position: absolute;
+  right: 2.8rem; /* leave place for submit button on desktop */
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.15rem 0.4rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* hide native clear to avoid double-clear visuals */
+.search-input::-webkit-search-cancel-button { display: none; }
+.search-input::-ms-clear { display: none; }
+
 /* enable native clear button in WebKit browsers (it will appear inside the input) */
 .search-input::-webkit-search-cancel-button { -webkit-appearance: searchfield-cancel-button; }
 .search-input::-ms-clear { display: block; }
