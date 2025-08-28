@@ -1,45 +1,68 @@
-
-@import '../../../styles/_variables.scss';
+@use 'sass:color';
+@use '../../../styles/variables' as *;
 
 .header {
-	background: $color-primary;
-	color: $color-background;
-	border-bottom: 2px solid $color-accent;
-	padding: 1rem 2rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  background: $color-primary;
+  color: white; // Usando white diretamente para melhor contraste
+  border-bottom: 2px solid $color-accent;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header__logo {
-	color: $color-accent;
-	font-weight: bold;
-	font-size: 1.5rem;
+  color: $color-accent;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: white; // Melhor contraste no header escuro
+  border: none;
+  font-size: 1.25rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-accent;
+  }
 }
 
 .header__nav a {
-	color: $color-background;
-	margin-left: 1.5rem;
-	text-decoration: none;
-	transition: color 0.2s;
-}
-.header__nav a:hover {
-	color: $color-accent;
+  color: white; // Melhor contraste
+  margin-left: 1.5rem;
+  text-decoration: none;
+  transition: color 0.2s;
+  
+  &:hover {
+    color: $color-accent;
+  }
 }
 
 .header__actions {
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .search-input {
-	width: 220px;
-	padding: 0.45rem 0.6rem;
-	border-radius: $radius-sm;
-	border: 1px solid $color-border;
-	background: lighten($color-primary, 6%);
-	color: $color-background;
+  width: 220px;
+  padding: 0.45rem 0.6rem;
+  border-radius: $radius-sm;
+  border: 1px solid color.adjust($color-primary, $lightness: 15%);
+  background: color.adjust($color-primary, $lightness: 6%);
+  color: white;
+  
+  &::placeholder { 
+    color: rgba(255, 255, 255, 0.7); 
+  }
+  
+  &:focus { 
+    outline: none;
+    border-color: $color-accent; 
+    box-shadow: 0 0 0 2px rgba($color-accent, 0.2);
+  }
 }
-.search-input::placeholder { color: rgba(255,255,255,0.7); }
-.search-input:focus { border-color: $color-accent; box-shadow: none; }
