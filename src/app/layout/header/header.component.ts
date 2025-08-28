@@ -6,6 +6,7 @@ import { SidebarService } from '../sidebar/sidebar.service';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
@@ -53,11 +54,13 @@ export class HeaderComponent {
   // alterna comportamento: em mobile esconder/mostrar; em desktop colapsar
   toggleSidebar() {
     const w = window.innerWidth;
+  console.log('Header.toggleSidebar invoked, width=', w, 'hiddenValue=', this.sidebar.hiddenValue, 'collapsedValue=', this.sidebar.collapsedValue);
     if (w <= 768) {
       // mobile: alterna hidden
       if (this.sidebar.hiddenValue) this.sidebar.show(); else this.sidebar.hide();
     } else {
       // desktop: alterna collapsed
+  console.log('Header.toggleSidebar -> toggling collapsed');
       this.sidebar.toggle();
     }
   }
