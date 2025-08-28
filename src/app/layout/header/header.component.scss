@@ -17,6 +17,14 @@
 	font-size: 1.5rem;
 }
 
+.btn-ghost {
+	background: transparent;
+	color: $color-background;
+	border: none;
+	font-size: 1.25rem;
+	padding: 0.25rem 0.5rem;
+}
+
 .header__nav a {
 	color: $color-background;
 	margin-left: 1.5rem;
