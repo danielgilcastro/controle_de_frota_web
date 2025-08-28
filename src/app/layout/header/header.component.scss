@@ -2,9 +2,9 @@
 @use '../../../styles/variables' as *;
 
 .header {
-  background: $color-primary;
+  background: var(--color-primary, #{$color-primary});
   color: white; // Usando white diretamente para melhor contraste
-  border-bottom: 2px solid $color-accent;
+  border-bottom: 2px solid var(--color-accent, #{$color-accent});
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
 }
 
 .header__logo {
-  color: $color-accent;
+  color: var(--color-accent, #{$color-accent});
   font-weight: bold;
   font-size: 1.5rem;
 }
@@ -31,14 +31,14 @@
   }
 }
 
-.header__nav a {
+  .header__nav a {
   color: white; // Melhor contraste
   margin-left: 1.5rem;
   text-decoration: none;
   transition: color 0.2s;
   
   &:hover {
-    color: $color-accent;
+  color: var(--color-accent, #{$color-accent});
   }
 }
 

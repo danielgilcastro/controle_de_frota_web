@@ -8,7 +8,7 @@ import { SidebarService } from '../sidebar/sidebar.service';
   selector: 'app-header',
   imports: [CommonModule, FormsModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
   constructor(public sidebar: SidebarService, private router: Router) {}
