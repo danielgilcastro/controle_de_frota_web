@@ -1,26 +1,22 @@
-
+// Global styles entry (stable)
+// Use the variables file that lives in `src/styles/variables.scss`
+@use 'sass:color';
+@import 'variables'; // Import das variáveis (funciona devido ao includePaths no angular.json)
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-// ==========================================================================
-// RESET & BASE GLOBAL
-// ==========================================================================
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Minimal reset and base tokens required by components */
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-html, body, #root, app-root {
-  height: 100%;
-  font-size: $font-size-base;
+html, body, app-root, #root { 
+  height: 100%; 
+  font-size: $font-size-base; 
 }
 
 body {
-  margin: 0;
   font-family: $font-family-base;
   font-weight: $font-weight-normal;
   line-height: $line-height-base;
@@ -29,7 +25,44 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  margin: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Core card styles used by many components */
+.card { 
+  background: $color-background; 
+  border: 1px solid $color-border; 
+  border-radius: $radius-lg; 
+  
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+.card-header { 
+  padding: $spacing-lg; 
+  border-bottom: 1px solid $color-border; 
+  background: $color-surface; 
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-lg;
+}
+
+.card-body { 
+  padding: $spacing-lg; 
+  
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Small utility classes needed by layout */
+.text-muted { color: $color-muted; }
+.bg-surface { background: $color-surface; }
 
 // ==========================================================================
 // TIPOGRAFIA MELHORADA
@@ -290,39 +323,6 @@ a {
 }
 
 // ==========================================================================
-// CARDS MODERNOS COM SOMBRAS
-// ==========================================================================
-.card {
-  background: $color-background;
-  border: 1px solid $color-border;
-  border-radius: $radius-lg;
-  box-shadow: $shadow-sm;
-  overflow: hidden;
-  transition: all $transition-normal;
-  
-  &:hover {
-    box-shadow: $shadow-md;
-    transform: translateY(-2px);
-  }
-}
-
-.card-header {
-  padding: $spacing-lg;
-  border-bottom: 1px solid $color-border;
-  background: $color-surface;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-lg;
-}
-
-.card-body {
-  padding: $spacing-lg;
-  
-  > *:last-child {
-    margin-bottom: 0;
-  }
-}
-
-// ==========================================================================
 // ALERTAS ELEGANTES (CORRIGIDO)
 // ==========================================================================
 .alert {
@@ -359,7 +359,6 @@ a {
 // ==========================================================================
 // UTILITIES & HELPER CLASSES
 // ==========================================================================
-.text-muted { color: $color-muted; }
 .text-primary { color: $color-primary; }
 .text-secondary { color: $color-secondary; }
 .text-success { color: $color-success; }
@@ -368,7 +367,6 @@ a {
 
 .bg-primary { background: $color-primary; color: white; }
 .bg-secondary { background: $color-secondary; color: white; }
-.bg-surface { background: $color-surface; }
 
 .sr-only {
   position: absolute;
