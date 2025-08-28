@@ -1,24 +1,57 @@
-/* Paleta de cores */
+/*
+  PALETA DE CORES - REFERÊNCIA PARA DESENVOLVEDORES
+  Azul Principal (Primário): #0A2E5D
+    Uso: Textos principais, cabeçalhos, elementos de destaque, fundos de seções importantes, ícones principais.
+  Ciano/Azul Secundário (Acento): #00B8D4
+    Uso: Elementos interativos (botões, links), gráficos, indicadores de status, destaques visuais, elementos da logo.
+  Cinza Neutro (Texto Secundário/Fundo): #6C757D
+    Uso: Textos secundários, descrições, bordas, linhas divisórias.
+  Branco (Fundo Principal): #FFFFFF
+    Uso: Fundos de tela, áreas de conteúdo, garantindo clareza, "respiro" visual e foco no conteúdo.
+  Cinza Claro (Fundo de Seções/Bordas): #F8F9FA
+    Uso: Fundos de seções, cards, elementos que precisam de um leve destaque sem roubar a atenção do conteúdo principal.
+*/
+
+
+/*
+  PALETA DE CORES - REFERÊNCIA PARA DESENVOLVEDORES
+  Azul Principal (Primário): #0A2E5D
+    Uso: Textos principais, cabeçalhos, elementos de destaque, fundos de seções importantes, ícones principais.
+  Ciano/Azul Secundário (Acento): #00B8D4
+    Uso: Elementos interativos (botões, links), gráficos, indicadores de status, destaques visuais, elementos da logo.
+  Cinza Neutro (Texto Secundário/Fundo): #6C757D
+    Uso: Textos secundários, descrições, bordas, linhas divisórias.
+  Branco (Fundo Principal): #FFFFFF
+    Uso: Fundos de tela, áreas de conteúdo, garantindo clareza, "respiro" visual e foco no conteúdo.
+  Cinza Claro (Fundo de Seções/Bordas): #F8F9FA
+    Uso: Fundos de seções, cards, elementos que precisam de um leve destaque sem roubar a atenção do conteúdo principal.
+*/
+
 :root {
+  --color-primary: #0A2E5D;
+  --color-accent: #00B8D4;
+  --color-muted: #6C757D;
   --color-background: #FFFFFF;
-  --color-surface: #F8FAFC;
-  --color-muted: #64748B;
-  --color-border: #E2E8F0;
-
-  --color-success: #22C55E;
-  --color-success-light: #4ADE80;
-  --color-warning: #F59E0B;
-  --color-warning-light: #FBBF24;
-  --color-danger: #EF4444;
-  --color-danger-light: #F87171;
-
-  --color-text: #0F172A;
-  --color-text-light: #334155;
-
-  --lightness: 80%;
-
+  --color-surface: #F8F9FA;
+  /* Extras para consistência do design system */
+  --color-primary-light: #0A2E5D;
+  --color-accent-light: #00B8D4;
+  --color-border: #6C757D;
+  --color-text: #0A2E5D;
+  --color-text-light: #6C757D;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --font-family-base: 'Segoe UI', Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-lg: 1.25rem;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
 }
-
 /* Reset básico */
 *,
 *::before,
@@ -29,18 +62,14 @@
 }
 
 /* Estilos globais */
-body {
-  background: var(--color-background);
-  color: var(--color-text);
-  font-family: 'Segoe UI', Arial, sans-serif;
-  line-height: 1.5;
-  min-height: 100vh;
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 150ms ease;
+  font-weight: var(--font-weight-semibold);
 }
 
-/* Utilitários */
-.text-muted {
-  color: var(--color-muted);
-}
+
 
 .text-light {
   color: var(--color-text-light);
@@ -52,18 +81,6 @@ body {
 
 .border {
   border: 1px solid var(--color-border);
-}
-
-.success {
-  color: var(--color-success);
-}
-
-.success-light {
-  color: var(--color-success-light);
-}
-
-.warning {
-  color: var(--color-warning);
 }
 
 .warning-light {
@@ -78,362 +95,257 @@ body {
   color: var(--color-danger-light);
 }
 
+
+
 html, body, app-root, #root { 
   height: 100%; 
-  font-size: $font-size-base; 
+  font-size: var(--font-size-base);
 }
 
 body {
-  font-family: $font-family-base;
-  font-weight: $font-weight-normal;
-  line-height: $line-height-base;
-  color: $color-text;
-  background: $color-background;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text);
+  background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   margin: 0;
 }
 
-:root {
-  --color-primary: #0A2E5D;
-  --color-primary-light: #0A2E5D;
-  --color-accent: #00B8D4;
-  --color-accent-light: #00B8D4;
-  --color-background: #FFFFFF;
-  --color-surface: #F8F9FA;
-  --color-muted: #6C757D;
-  --color-border: #6C757D;
-  --color-text: #0A2E5D;
-  --color-text-light: #6C757D;
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-}
+
+
 
 .card-header { 
-  padding: $spacing-lg; 
-  border-bottom: 1px solid $color-border; 
-  background: $color-surface; 
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-lg;
+  padding: var(--spacing-lg); 
+  border-bottom: 1px solid var(--color-border); 
+  background: var(--color-surface); 
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
 }
 
 .card-body { 
-  padding: $spacing-lg; 
+  padding: var(--spacing-lg); 
   
   > *:last-child {
     margin-bottom: 0;
   }
 }
 
-/* Small utility classes needed by layout */
-.text-muted { color: $color-muted; }
-.bg-surface { background: $color-surface; }
 
-// ==========================================================================
-// TIPOGRAFIA MELHORADA
-// ==========================================================================
+
+
+
+/* Tipografia melhorada */
 h1, h2, h3, h4, h5, h6 {
-  color: $color-primary;
-  margin: 0 0 $spacing-md 0;
-  font-weight: $font-weight-semibold;
+  color: var(--color-primary);
+  margin: 0 0 var(--spacing-md) 0;
+  font-weight: var(--font-weight-semibold);
   line-height: 1.3;
 }
 
-h1 { font-size: 2.5rem; margin-bottom: $spacing-lg; }
-h2 { font-size: 2rem; margin-bottom: $spacing-md; }
-h3 { font-size: 1.5rem; margin-bottom: $spacing-md; }
+h1 { font-size: 2.5rem; margin-bottom: var(--spacing-lg); }
+h2 { font-size: 2rem; margin-bottom: var(--spacing-md); }
+h3 { font-size: 1.5rem; margin-bottom: var(--spacing-md); }
 h4 { font-size: 1.25rem; }
 h5 { font-size: 1.125rem; }
 h6 { font-size: 1rem; }
 
 p {
-  margin: 0 0 $spacing-md 0;
-  color: $color-text-light;
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--color-text-light);
   line-height: 1.7;
 }
 
-// Links elegantes
-a {
-  color: $color-secondary;
-  text-decoration: none;
-  transition: color $transition-fast;
-  font-weight: $font-weight-medium;
-  
-  &:hover {
-    color: $color-accent;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-}
 
-// ==========================================================================
-// BOTÕES ELEGANTES & MODERNOS
-// ==========================================================================
+
+
+/* BOTÕES ELEGANTES & MODERNOS */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-sm;
+  gap: var(--spacing-sm);
   padding: 0.75rem 1.5rem;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
   line-height: 1;
-  border-radius: $radius-md;
+  border-radius: var(--radius-md);
   cursor: pointer;
   border: 2px solid transparent;
-  transition: all $transition-normal;
+  transition: all 250ms ease;
   user-select: none;
   text-decoration: none;
   font-family: inherit;
   position: relative;
   overflow: hidden;
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba($color-secondary, 0.2);
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none !important;
-  }
-
-  &:active {
-    transform: translateY(1px);
-  }
 }
-
-// Variantes de botão com gradientes suaves
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,184,212,0.2);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+.btn:active {
+  transform: translateY(1px);
+}
 .btn-primary {
-  background: linear-gradient(135deg, $color-secondary, $color-accent);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
   color: white;
-  border-color: $color-secondary;
-  
-  &:hover {
-    background: linear-gradient(135deg, $color-secondary-light, $color-accent-light);
-    transform: translateY(-1px);
-    box-shadow: $shadow-md;
-  }
+  border-color: var(--color-accent);
 }
-
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+}
 .btn-secondary {
-  background: $color-primary;
+  background: var(--color-primary);
   color: white;
-  
-  &:hover {
-    background: $color-primary-light;
-    transform: translateY(-1px);
-    box-shadow: $shadow-md;
-  }
 }
-
+.btn-secondary:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+}
 .btn-outline {
   background: transparent;
-  color: $color-primary;
-  border-color: $color-border;
-  
-  &:hover {
-    background: $color-primary;
-    color: white;
-    border-color: $color-primary;
-  }
+  color: var(--color-primary);
+  border-color: var(--color-border);
 }
-
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
 .btn-ghost {
   background: transparent;
-  color: $color-primary;
+  color: var(--color-primary);
   border-color: transparent;
-  
-  &:hover {
-    background: rgba($color-primary, 0.1);
-    color: $color-primary;
-  }
 }
-
-// Botões de estado
+.btn-ghost:hover {
+  background: rgba(10,46,93,0.1);
+  color: var(--color-primary);
+}
 .btn-success {
-  background: $color-success;
+  background: var(--color-success);
   color: white;
-  
-  &:hover {
-    background: $color-success-light;
-    transform: translateY(-1px);
-  }
 }
-
+.btn-success:hover {
+  background: var(--color-success-light);
+  transform: translateY(-1px);
+}
 .btn-danger {
-  background: $color-danger;
+  background: var(--color-danger);
   color: white;
-  
-  &:hover {
-    background: $color-danger-light;
-    transform: translateY(-1px);
-  }
 }
-
-// Tamanhos
+.btn-danger:hover {
+  background: var(--color-danger-light);
+  transform: translateY(-1px);
+}
 .btn-sm {
   padding: 0.5rem 1rem;
-  font-size: $font-size-xs;
+  font-size: 0.875rem;
 }
-
 .btn-lg {
   padding: 1rem 2rem;
-  font-size: $font-size-md;
+  font-size: 1.125rem;
 }
-
 .btn-block {
   width: 100%;
   display: flex;
 }
 
-// ==========================================================================
-// INPUTS MODERNOS & ACESSÍVEIS
-// ==========================================================================
+
+/* INPUTS MODERNOS & ACESSÍVEIS */
 .input {
   width: 100%;
   padding: 0.875rem 1rem;
   font-family: inherit;
-  font-size: $font-size-sm;
-  border: 2px solid $color-border;
-  border-radius: $radius-md;
-  background: $color-background;
-  color: $color-text;
-  transition: all $transition-fast;
+  font-size: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-background);
+  color: var(--color-text);
+  transition: all 150ms ease;
   line-height: 1.5;
-
-  &::placeholder {
-    color: $color-muted;
-    font-weight: $font-weight-normal;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: $color-secondary;
-    box-shadow: 0 0 0 3px rgba($color-secondary, 0.1);
-    transform: translateY(-1px);
-  }
-
-  &:hover {
-    border-color: color.adjust($color-border, $lightness: -10%);
-  }
 }
-
-// Estados
-.input-error {
-  border-color: $color-danger;
-  box-shadow: 0 0 0 3px rgba($color-danger, 0.1);
-  
-  &:focus {
-    border-color: $color-danger;
-    box-shadow: 0 0 0 3px rgba($color-danger, 0.2);
-  }
+.input::placeholder {
+  color: var(--color-muted);
+  font-weight: var(--font-weight-normal);
 }
-
-.input-success {
-  border-color: $color-success;
-  box-shadow: 0 0 0 3px rgba($color-success, 0.1);
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0,184,212,0.1);
+  transform: translateY(-1px);
 }
-
-.input-disabled {
-  background: $color-surface;
-  color: $color-muted;
+.input:disabled, .input-disabled {
+  background: var(--color-surface);
+  color: var(--color-muted);
   cursor: not-allowed;
-  
-  &:hover {
-    border-color: $color-border;
-  }
 }
-
-// Tamanhos
 .input-sm {
   padding: 0.625rem 0.75rem;
-  font-size: $font-size-xs;
+  font-size: 0.875rem;
 }
-
 .input-lg {
   padding: 1rem 1.25rem;
-  font-size: $font-size-md;
+  font-size: 1.125rem;
 }
 
-// ==========================================================================
-// FORMULÁRIOS ELEGANTES
-// ==========================================================================
+
 .form-group {
-  margin-bottom: $spacing-lg;
+  margin-bottom: var(--spacing-lg);
   position: relative;
 }
-
 .form-label {
   display: block;
-  margin-bottom: $spacing-sm;
-  font-weight: $font-weight-semibold;
-  color: $color-primary;
-  font-size: $font-size-sm;
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  font-size: 1rem;
 }
-
 .form-help {
-  font-size: $font-size-xs;
-  color: $color-muted;
-  margin-top: $spacing-xs;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin-top: var(--spacing-xs);
   line-height: 1.4;
 }
-
 .form-error {
-  color: $color-danger;
-  font-size: $font-size-xs;
-  margin-top: $spacing-xs;
-  font-weight: $font-weight-medium;
+  color: var(--color-danger);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+  font-weight: var(--font-weight-semibold);
 }
 
-// ==========================================================================
-// ALERTAS ELEGANTES (CORRIGIDO)
-// ==========================================================================
-.alert {
-  padding: $spacing-md $spacing-lg;
-  border-radius: $radius-md;
-  margin-bottom: $spacing-md;
-  color: white;
-  font-weight: $font-weight-medium;
-  border-left: 4px solid transparent;
-  box-shadow: $shadow-sm;
-  
-  &--info {
-    background: linear-gradient(135deg, $color-secondary, $color-accent);
-    border-left-color: color.adjust($color-secondary, $lightness: -10%);
-  }
-  
-  &--success {
-    background: linear-gradient(135deg, $color-success, $color-success-light);
-    border-left-color: color.adjust($color-success, $lightness: -10%);
-  }
-  
-  &--warn {
-    background: linear-gradient(135deg, $color-warning, $color-warning-light);
-    border-left-color: color.adjust($color-warning, $lightness: -10%);
-    color: #1F2937;
-  }
-  
-  &--danger {
-    background: linear-gradient(135deg, $color-danger, $color-danger-light);
-    border-left-color: color.adjust($color-danger, $lightness: -10%);
-  }
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+.alert--warn {
+  background: linear-gradient(135deg, var(--color-warning), var(--color-warning-light));
+  border-left-color: var(--color-warning);
+  color: #1F2937;
+}
+.alert--danger {
+  background: linear-gradient(135deg, var(--color-danger), var(--color-danger-light));
+  border-left-color: var(--color-danger);
 }
 
-// ==========================================================================
-// UTILITIES & HELPER CLASSES
-// ==========================================================================
-.text-primary { color: $color-primary; }
-.text-secondary { color: $color-secondary; }
-.text-success { color: $color-success; }
-.text-danger { color: $color-danger; }
-.text-warning { color: $color-warning; }
 
-.bg-primary { background: $color-primary; color: white; }
-.bg-secondary { background: $color-secondary; color: white; }
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-accent); }
+.text-success { color: var(--color-success); }
+.text-danger { color: var(--color-danger); }
+.text-warning { color: var(--color-warning); }
+.bg-primary { background: var(--color-primary); color: white; }
+.bg-secondary { background: var(--color-accent); color: white; }
 
 .sr-only {
   position: absolute;
@@ -446,68 +358,37 @@ a {
   border: 0;
 }
 
-// Espaçamentos utilitários
-.mt-1 { margin-top: $spacing-xs; }
-.mt-2 { margin-top: $spacing-sm; }
-.mt-3 { margin-top: $spacing-md; }
-.mt-4 { margin-top: $spacing-lg; }
 
-.mb-1 { margin-bottom: $spacing-xs; }
-.mb-2 { margin-bottom: $spacing-sm; }
-.mb-3 { margin-bottom: $spacing-md; }
-.mb-4 { margin-bottom: $spacing-lg; }
+/* Espaçamentos utilitários */
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
 
-// ==========================================================================
-// RESPONSIVIDADE AVANÇADA
-// ==========================================================================
-@media (max-width: $breakpoint-lg) {
-  html, body {
-    font-size: 15px;
-  }
-  
-  .card {
-    border-radius: $radius-md;
-  }
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+
+
+/* RESPONSIVIDADE AVANÇADA */
+@media (max-width: 1024px) {
+  html, body { font-size: 15px; }
+  .card { border-radius: var(--radius-md); }
 }
-
-@media (max-width: $breakpoint-md) {
-  body {
-    font-size: 14px;
-  }
-  
-  .btn {
-    padding: 0.625rem 1.25rem;
-  }
-  
-  .card-header,
-  .card-body {
-    padding: $spacing-md;
-  }
-  
+@media (max-width: 768px) {
+  body { font-size: 14px; }
+  .btn { padding: 0.625rem 1.25rem; }
+  .card-header, .card-body { padding: var(--spacing-md); }
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.25rem; }
 }
-
-@media (max-width: $breakpoint-sm) {
-  body {
-    font-size: 13px;
-  }
-  
-  .btn {
-    padding: 0.5rem 1rem;
-    font-size: $font-size-xs;
-  }
-  
-  .input {
-    padding: 0.75rem;
-    font-size: $font-size-xs;
-  }
-  
-  .card {
-    border-radius: $radius-sm;
-    margin: 0 $spacing-sm;
-  }
+@media (max-width: 640px) {
+  body { font-size: 13px; }
+  .btn { padding: 0.5rem 1rem; font-size: 0.875rem; }
+  .input { padding: 0.75rem; font-size: 0.875rem; }
+  .card { border-radius: var(--radius-sm); margin: 0 var(--spacing-sm); }
 }
 
 // ==========================================================================
