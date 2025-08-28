@@ -324,7 +324,7 @@ a {
 }
 
 // ==========================================================================
-// ALERTAS ELEGANTES
+// ALERTAS ELEGANTES (CORRIGIDO)
 // ==========================================================================
 .alert {
   padding: $spacing-md $spacing-lg;
@@ -337,23 +337,23 @@ a {
   
   &--info {
     background: linear-gradient(135deg, $color-secondary, $color-accent);
-    border-left-color: darken($color-secondary, 10%);
+    border-left-color: color.adjust($color-secondary, $lightness: -10%);
   }
   
   &--success {
     background: linear-gradient(135deg, $color-success, $color-success-light);
-    border-left-color: darken($color-success, 10%);
+    border-left-color: color.adjust($color-success, $lightness: -10%);
   }
   
   &--warn {
     background: linear-gradient(135deg, $color-warning, $color-warning-light);
-    border-left-color: darken($color-warning, 10%);
+    border-left-color: color.adjust($color-warning, $lightness: -10%);
     color: #1F2937;
   }
   
   &--danger {
     background: linear-gradient(135deg, $color-danger, $color-danger-light);
-    border-left-color: darken($color-danger, 10%);
+    border-left-color: color.adjust($color-danger, $lightness: -10%);
   }
 }
 
