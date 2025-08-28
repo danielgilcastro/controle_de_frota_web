@@ -1,5 +1,5 @@
 
-<header class="header">
+<header class="header" [class.search-open]="searchOpen">
 	<button class="btn btn-ghost" (click)="toggleSidebar()" aria-label="Alternar menu">☰</button>
 	<div class="header__logo">FrotaSys</div>
 	<nav class="header__nav">
@@ -9,7 +9,20 @@
 		<a href="#">Relatórios</a>
 	</nav>
 	<div class="header__actions">
-		<input type="search" placeholder="Pesquisar..." class="search-input" aria-label="Pesquisar" />
+		<!-- mobile search toggle -->
+		<button class="btn btn-ghost mobile-search-toggle" (click)="toggleSearchMobile(searchInput)" aria-label="Pesquisar">
+			🔍
+		</button>
+
+		<!-- input always in DOM; visibility on mobile controlled by .search-open on header -->
+		<div class="search-container">
+			<input #searchInput type="search" placeholder="Pesquisar..." class="search-input" aria-label="Pesquisar" [(ngModel)]="searchValue" (keydown)="onSearchKey($event)" />
+			<!-- custom clear button (cross) — works in all browsers -->
+			<button *ngIf="searchValue" class="btn btn-ghost search-clear-custom" (click)="clearSearch(); searchInput.focus()" aria-label="Limpar pesquisa">
+				✕
+			</button>
+			<button class="btn btn-ghost search-submit" (click)="submitSearch()" aria-label="Enviar pesquisa">🔍</button>
+		</div>
 		<button class="btn btn-primary">Novo</button>
 	</div>
 </header>
