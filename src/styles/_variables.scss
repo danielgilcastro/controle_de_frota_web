@@ -1,23 +1,97 @@
-// Variáveis e tokens compartilhados
-$color-primary: #0A2A3A;
-$color-secondary: #0077B6;
-$color-accent: #00B4D8;
-$color-background: #FFFFFF;
-$color-surface: #F4F6F8;
-$color-text: #0A2A3A;
-$color-muted: #6B7280;
-$color-border: #E6EEF3;
-$color-success: #2D9A4A;
-$color-warning: #E3A008;
-$color-danger: #E03131;
+// ==========================================================================
+// DESIGN SYSTEM - CONTROLE DE FROTA
+// ==========================================================================
 
+// ==========================================================================
+// PALETA DE CORES - Azul Marinho & Azul Profissional
+// ==========================================================================
+
+// Cores primárias (Azul Marinho)
+$color-primary: #0A2A3A;       // Azul marinho escuro - principal
+$color-primary-light: #1A3A4A; // Azul marinho claro
+$color-primary-lighter: #2A4A5A;
+
+// Cores secundárias (Azul Profissional)
+$color-secondary: #0077B6;     // Azul profissional - calls-to-action
+$color-secondary-light: #0088C6; 
+$color-accent: #00B4D8;        // Azul acento - hovers e destaques
+$color-accent-light: #00C4E8;
+
+// Cores neutras
+$color-background: #FFFFFF;    // Fundo principal
+$color-surface: #F8FAFC;       // Superfícies e cards
+$color-muted: #64748B;         // Texto secundário
+$color-border: #E2E8F0;        // Bordas e divisórias
+
+// Cores de estado
+$color-success: #22C55E;       // Verde - sucesso
+$color-success-light: #4ADE80;
+$color-warning: #F59E0B;       // Âmbar - alerta
+$color-warning-light: #FBBF24;
+$color-danger: #EF4444;        // Vermelho - erro
+$color-danger-light: #F87171;
+
+// Cores de texto
+$color-text: #0F172A;          // Texto principal
+$color-text-light: #334155;    // Texto secundário
+
+// ==========================================================================
+// TIPOGRAFIA - Inter Font Family
+// ==========================================================================
 $font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.45;
+$font-size-base: 16px;         // Aumentado para melhor legibilidade
+$line-height-base: 1.6;        // Melhor espaçamento para leitura
 
-$radius-sm: 4px;
+// Tamanhos de fonte
+$font-size-xs: 0.75rem;        // 12px
+$font-size-sm: 0.875rem;       // 14px
+$font-size-md: 1rem;           // 16px
+$font-size-lg: 1.125rem;       // 18px
+$font-size-xl: 1.25rem;        // 20px
+$font-size-2xl: 1.5rem;        // 24px
+
+// Pesos de fonte
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// ==========================================================================
+// ESPAÇAMENTOS & TAMANHOS
+// ==========================================================================
+$spacing-xs: 0.25rem;          // 4px
+$spacing-sm: 0.5rem;           // 8px
+$spacing-md: 1rem;             // 16px
+$spacing-lg: 1.5rem;           // 24px
+$spacing-xl: 2rem;             // 32px
+$spacing-2xl: 3rem;            // 48px
+
+// ==========================================================================
+// BORDAS & SOMBRAS
+// ==========================================================================
+$radius-sm: 6px;               // Bordas suaves
 $radius-md: 8px;
-$spacing-xs: 0.25rem;
-$spacing-sm: 0.5rem;
-$spacing-md: 1rem;
-$spacing-lg: 1.5rem;
+$radius-lg: 12px;
+$radius-full: 9999px;          // Bordas completamente arredondadas
+
+// Sombras suaves e modernas
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+// ==========================================================================
+// ANIMAÇÕES & TRANSITIONS
+// ==========================================================================
+$transition-fast: 150ms ease;
+$transition-normal: 250ms ease;
+$transition-slow: 350ms ease;
+
+// ==========================================================================
+// BREAKPOINTS - Design Responsivo
+// ==========================================================================
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
