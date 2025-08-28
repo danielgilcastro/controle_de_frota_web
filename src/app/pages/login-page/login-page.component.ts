@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-login-page',
   imports: [RouterLink],
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss'
+  styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
 
