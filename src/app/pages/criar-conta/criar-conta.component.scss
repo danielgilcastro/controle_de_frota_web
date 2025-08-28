@@ -1,0 +1,79 @@
+@use 'sass:color';
+@use '../../../styles/variables' as *;
+
+.criar-conta-page {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: $spacing-lg;
+
+	.card {
+		/* base visual alinhado ao global */
+		background: $color-background;
+		border: 1px solid $color-border;
+		border-radius: $radius-md;
+		box-shadow: 0 6px 18px rgba(10, 42, 58, 0.06);
+		padding: $spacing-md;
+		width: 100%;
+		max-width: 520px;
+
+		h2 { margin: 0 0 $spacing-sm 0; }
+
+		form { display: flex; flex-direction: column; gap: $spacing-sm; }
+
+		label {
+			display: block;
+			margin-bottom: $spacing-xs;
+			font-weight: 600;
+			color: $color-primary;
+			font-size: 0.95rem;
+		}
+
+		input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+			width: 100%;
+			padding: 0.5rem 0.75rem;
+			border: 1px solid $color-border;
+			border-radius: $radius-sm;
+			background: $color-background;
+			color: $color-text;
+			font-family: $font-family-base;
+			font-size: 0.95rem;
+			transition: border-color 150ms ease, box-shadow 150ms ease;
+		}
+
+		input:focus {
+			outline: none;
+			border-color: $color-secondary;
+			box-shadow: 0 0 0 6px rgba(0, 119, 182, 0.04);
+		}
+
+		.two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: $spacing-sm; }
+
+		.checkbox-row { display: flex; align-items: center; gap: $spacing-sm; }
+
+		.actions { display: flex; align-items: center; justify-content: space-between; gap: $spacing-sm; margin-top: $spacing-sm; }
+
+		/* botão primário local, coerente com .btn-primary global */
+		.primary {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			padding: 0.5rem 0.875rem;
+			font-size: 0.95rem;
+			line-height: 1;
+			border-radius: $radius-sm;
+			cursor: pointer;
+			border: 1px solid transparent;
+			background: $color-secondary;
+			color: $color-background;
+			transition: background 180ms ease, color 180ms ease, box-shadow 120ms ease;
+		}
+		.primary:hover { background: $color-accent; }
+
+		.link { color: $color-secondary; font-size: 0.95rem; }
+
+		.error { color: $color-danger; font-size: 0.85rem; margin-top: $spacing-xs; }
+	}
+}
+

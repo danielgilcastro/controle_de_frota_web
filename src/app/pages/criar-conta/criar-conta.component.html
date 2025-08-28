@@ -1,0 +1,61 @@
+<div class="criar-conta-page">
+	<div class="card">
+		<h2>Criar Conta</h2>
+		<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+			<div class="row">
+				<label>Nome</label>
+				<input formControlName="nome" type="text" placeholder="Seu nome" />
+						<small class="error" *ngIf="submitted && f['nome'].errors">
+							<span *ngIf="f['nome'].errors['required']">Nome é obrigatório.</span>
+							<span *ngIf="f['nome'].errors['minlength']">Mínimo 2 caracteres.</span>
+						</small>
+			</div>
+
+			<div class="row">
+				<label>E-mail</label>
+				<input formControlName="email" type="email" placeholder="seu@email.com" />
+						<small class="error" *ngIf="submitted && f['email'].errors">
+							<span *ngIf="f['email'].errors['required']">E-mail é obrigatório.</span>
+							<span *ngIf="f['email'].errors['email']">E-mail inválido.</span>
+						</small>
+			</div>
+
+			<div class="row two-cols">
+				<div>
+					<label>Senha</label>
+					<input formControlName="senha" type="password" placeholder="Senha" />
+								<small class="error" *ngIf="submitted && f['senha'].errors">
+									<span *ngIf="f['senha'].errors['required']">Senha é obrigatória.</span>
+									<span *ngIf="f['senha'].errors['minlength']">Mínimo 6 caracteres.</span>
+								</small>
+				</div>
+
+				<div>
+					<label>Confirmar senha</label>
+					<input formControlName="confirmarSenha" type="password" placeholder="Repita a senha" />
+								<small class="error" *ngIf="submitted && (f['confirmarSenha'].errors || form.errors?.['notMatching'])">
+									<span *ngIf="f['confirmarSenha'].errors?.['required']">Confirmação é obrigatória.</span>
+									<span *ngIf="form.errors?.['notMatching']">As senhas não coincidem.</span>
+								</small>
+				</div>
+			</div>
+
+			<div class="row">
+				<label>Telefone (opcional)</label>
+				<input formControlName="telefone" type="tel" placeholder="(00) 00000-0000" />
+			</div>
+
+			<div class="row checkbox-row">
+				<label>
+					<input formControlName="termos" type="checkbox" /> Eu aceito os termos e condições
+				</label>
+			<small class="error" *ngIf="submitted && f['termos'].errors">Você precisa aceitar os termos.</small>
+			</div>
+
+			<div class="actions">
+				<button type="submit" class="primary">Criar conta</button>
+				<a class="link" routerLink="/login">Já tenho conta</a>
+			</div>
+		</form>
+	</div>
+</div>
