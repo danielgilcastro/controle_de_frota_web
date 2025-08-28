@@ -28,20 +28,20 @@ body {
   margin: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Core card styles used by many components */
-.card { 
-  background: $color-background; 
-  border: 1px solid $color-border; 
-  border-radius: $radius-lg; 
-  
-  &:hover {
-    box-shadow: $shadow-md;
-    transform: translateY(-2px);
-  }
+:root {
+  --color-primary: #0A2E5D;
+  --color-primary-light: #0A2E5D;
+  --color-accent: #00B8D4;
+  --color-accent-light: #00B8D4;
+  --color-background: #FFFFFF;
+  --color-surface: #F8F9FA;
+  --color-muted: #6C757D;
+  --color-border: #6C757D;
+  --color-text: #0A2E5D;
+  --color-text-light: #6C757D;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
 }
 
 .card-header { 
