@@ -1,5 +1,7 @@
 
-<aside class="card" [class.sidebar]="true" [class.sidebar--hidden]="hidden" [class.sidebar--collapsed]="collapsed">
+<div class="sidebar-wrapper" [class.open]="!hidden && !collapsed">
+  <div class="sidebar-backdrop" *ngIf="!hidden && !collapsed" (click)="sidebar.hide()"></div>
+  <aside class="card" [class.sidebar]="true" [class.sidebar--hidden]="hidden" [class.sidebar--collapsed]="collapsed">
 	<div class="card-header">Menu</div>
 	<div class="card-body">
 		<div class="sidebar__item active">
@@ -23,4 +25,5 @@
 			<span class="sidebar__label">Relatórios</span>
 		</div>
 	</div>
-</aside>
+  </aside>
+</div>
