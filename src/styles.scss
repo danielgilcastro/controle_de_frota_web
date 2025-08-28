@@ -1,5 +1,5 @@
-
-@import './styles/_variables.scss';
+@use 'sass:color';
+@use './styles/variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
 /* Reset e base global */
@@ -58,7 +58,8 @@ a:hover { color: $color-accent; }
 	@extend .btn;
 	background: $color-secondary;
 	color: $color-background;
-	border-color: darken($color-secondary, 6%);
+	// CORREÇÃO AQUI: Substitui darken() por color.adjust()
+	border-color: color.adjust($color-secondary, $lightness: -6%);
 }
 .btn-primary:hover { background: $color-accent; }
 
@@ -125,4 +126,3 @@ input:focus, textarea:focus, select:focus {
 .text-muted { color: $color-muted; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
-/* You can add global styles to this file, and also import other style files */
