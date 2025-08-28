@@ -2,6 +2,10 @@
 @use './styles/variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
+/* ==========================================================================
+   ESTILOS GLOBAIS - CONTROLE DE FROTA
+   ========================================================================== */
+
 /* Reset e base global */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -22,6 +26,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ==========================================================================
+   TIPOGRAFIA
+   ========================================================================== */
+
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   color: $color-primary;
@@ -35,7 +43,13 @@ p { margin: 0 0 $spacing-md 0; }
 a { color: $color-secondary; text-decoration: none; }
 a:hover { color: $color-accent; }
 
-/* --- BOTÕES GLOBAIS (Classes utilitárias) --- */
+/* ==========================================================================
+   BOTÕES GLOBAIS
+   Classes disponíveis: .btn .btn-primary .btn-secondary .btn-outline .btn-ghost .btn-danger .btn-success
+   Tamanhos: .btn-sm .btn-lg .btn-block
+   Uso: <button class="btn btn-primary">Texto</button>
+   ========================================================================== */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -120,7 +134,12 @@ a:hover { color: $color-accent; }
   display: flex;
 }
 
-/* --- INPUTS GLOBAIS (Classes utilitárias) --- */
+/* ==========================================================================
+   INPUTS GLOBAIS
+   Classes disponíveis: .input .input-sm .input-lg .input-error .input-success .input-disabled
+   Uso: <input type="text" class="input" placeholder="Digite algo">
+   ========================================================================== */
+
 .input {
   width: 100%;
   padding: 0.5rem 0.75rem;
@@ -170,7 +189,17 @@ a:hover { color: $color-accent; }
   font-size: 1.05rem;
 }
 
-/* --- FORMULÁRIOS GLOBAIS --- */
+/* ==========================================================================
+   FORMULÁRIOS GLOBAIS
+   Classes disponíveis: .form-group .form-label .form-help .form-error
+   Uso: 
+   <div class="form-group">
+     <label class="form-label">Email</label>
+     <input type="email" class="input">
+     <div class="form-help">Digite seu email</div>
+   </div>
+   ========================================================================== */
+
 .form-group { 
   margin-bottom: $spacing-md; 
 }
@@ -195,7 +224,16 @@ a:hover { color: $color-accent; }
   margin-top: 0.25rem;
 }
 
-/* --- Cards e saídas --- */
+/* ==========================================================================
+   CARDS
+   Classes disponíveis: .card .card-header .card-body
+   Uso:
+   <div class="card">
+     <div class="card-header">Título</div>
+     <div class="card-body">Conteúdo</div>
+   </div>
+   ========================================================================== */
+
 .card {
   background: $color-background;
   border: 1px solid $color-border;
@@ -203,21 +241,54 @@ a:hover { color: $color-accent; }
   box-shadow: 0 1px 2px rgba(10,42,58,0.03);
   overflow: hidden;
 }
-.card-header { padding: 0.75rem $spacing-md; border-bottom: 1px solid $color-border; background: $color-surface; font-weight: 600; }
-.card-body { padding: $spacing-md; }
+.card-header { 
+  padding: 0.75rem $spacing-md; 
+  border-bottom: 1px solid $color-border; 
+  background: $color-surface; 
+  font-weight: 600; 
+}
+.card-body { 
+  padding: $spacing-md; 
+}
 
-/* Alerts */
-.alert { padding: 0.75rem 1rem; border-radius: $radius-sm; margin-bottom: $spacing-md; color: $color-background; }
+/* ==========================================================================
+   ALERTAS
+   Classes disponíveis: .alert .alert--info .alert--success .alert--warn .alert--danger
+   Uso: <div class="alert alert--success">Mensagem de sucesso</div>
+   ========================================================================== */
+
+.alert { 
+  padding: 0.75rem 1rem; 
+  border-radius: $radius-sm; 
+  margin-bottom: $spacing-md; 
+  color: $color-background; 
+}
 .alert--info { background: $color-secondary; }
 .alert--success { background: $color-success; }
 .alert--warn { background: $color-warning; }
 .alert--danger { background: $color-danger; }
 
-/* Utilities */
-.text-muted { color: $color-muted; }
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+/* ==========================================================================
+   UTILITIES
+   Classes utilitárias: .text-muted .sr-only
+   ========================================================================== */
 
-/* Responsive helpers */
+.text-muted { color: $color-muted; }
+.sr-only { 
+  position: absolute; 
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px; 
+  overflow: hidden; 
+  clip: rect(0,0,0,0); 
+  border: 0; 
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
 @media (max-width: 1024px) {
   html, body { font-size: 15px; }
 }
@@ -226,7 +297,6 @@ a:hover { color: $color-accent; }
   body { font-size: 14px; }
   .btn { padding: 0.4rem 0.6rem; }
   .card { border-radius: 0.5rem; }
-  /* reduce global paddings for smaller screens */
   .card-header { padding: 0.5rem 0.75rem; }
   .card-body { padding: 0.75rem; }
 }
@@ -236,3 +306,37 @@ a:hover { color: $color-accent; }
   .btn { font-size: 0.85rem; }
   .input { font-size: 0.9rem; }
 }
+
+/* ==========================================================================
+   EXEMPLOS DE USO:
+
+   BOTÕES:
+   <button class="btn btn-primary">Primário</button>
+   <button class="btn btn-secondary btn-lg">Secundário Grande</button>
+   <a class="btn btn-outline btn-sm">Link Outline</a>
+
+   INPUTS:
+   <input type="text" class="input" placeholder="Normal">
+   <input type="email" class="input input-lg" placeholder="Email grande">
+   <input type="password" class="input input-error" placeholder="Com erro">
+
+   FORMULÁRIOS:
+   <div class="form-group">
+     <label class="form-label">Nome completo</label>
+     <input type="text" class="input">
+     <div class="form-help">Digite seu nome completo</div>
+   </div>
+
+   CARDS:
+   <div class="card">
+     <div class="card-header">Título do Card</div>
+     <div class="card-body">
+       <p>Conteúdo do card aqui</p>
+       <button class="btn btn-primary">Ação</button>
+     </div>
+   </div>
+
+   ALERTAS:
+   <div class="alert alert--success">Operação realizada com sucesso!</div>
+   <div class="alert alert--danger">Ocorreu um erro!</div>
+   ========================================================================== */
