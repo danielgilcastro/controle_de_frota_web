@@ -1,1 +1,18 @@
-<p>login-page works!</p>
+<div class="form-group login">
+  <form>
+    <label class="form-label" for="username">Usuário:</label>
+    <input class="input" type="text" id="username" name="username" required />
+
+    <label class="form-label" for="password">Senha:</label>
+    <input
+      class="input"
+      type="password"
+      id="password"
+      name="password"
+      required
+    />
+
+    <button type="submit" class="btn btn-primary btn-large">Login</button>
+    <p class="link-create-account">não tem Conta? <a routerLink="/criar-conta">clique aqui!</a></p>
+  </form>
+</div>

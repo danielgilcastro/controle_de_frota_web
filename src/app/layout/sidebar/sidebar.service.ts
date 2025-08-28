@@ -40,7 +40,7 @@ export class SidebarService implements OnDestroy {
   // ações
   toggle() { const next = !this._collapsed$.value; this._collapsed$.next(next); }
   show() { this._hidden$.next(false); localStorage.setItem(this.storageKey, 'false'); }
-  hide(persist = true) { this._hidden$.next(true); if (persist) localStorage.setItem(this.storageKey, 'true'); }
+  hide(persist = true) { this._hidden$.next(true); if (persist) localStorage.setItem(this.storageKey, 'true'); console.log('SidebarService.hide called, persist=', persist); }
   setCollapsed(value: boolean) { this._collapsed$.next(value); }
 
   // comportamento responsivo: se estiver em tela pequena, esconder automaticamente

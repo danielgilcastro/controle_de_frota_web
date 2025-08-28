@@ -9,6 +9,12 @@
 		<a href="#">Relatórios</a>
 	</nav>
 	<div class="header__actions">
+		<!-- debug indicator for sidebar state -->
+		<div class="sidebar-debug" aria-hidden="true" style="margin-right:1rem; font-size:0.9rem; color:rgba(255,255,255,0.85);">
+			<span *ngIf="sidebar.hiddenValue">[sidebar: hidden]</span>
+			<span *ngIf="!sidebar.hiddenValue && sidebar.collapsedValue">[sidebar: collapsed]</span>
+			<span *ngIf="!sidebar.hiddenValue && !sidebar.collapsedValue">[sidebar: visible]</span>
+		</div>
 		<!-- mobile search toggle -->
 		<button class="btn btn-ghost mobile-search-toggle" (click)="toggleSearchMobile(searchInput)" aria-label="Pesquisar">
 			🔍

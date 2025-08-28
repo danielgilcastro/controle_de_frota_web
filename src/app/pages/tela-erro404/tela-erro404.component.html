@@ -1,0 +1,16 @@
+<div class="erro-page">
+	<div class="card">
+		<div class="card-body">
+			<div class="icon">⚠️</div>
+			<h2>
+				{{ tipo === 'offline' ? 'Sem conexão' : tipo === 'timeout' ? 'Tempo esgotado' : 'Página não encontrada' }}
+			</h2>
+			<p class="message">{{ mensagem || (tipo === 'offline' ? 'Não foi possível conectar ao servidor. Verifique sua conexão.' : tipo === 'timeout' ? 'A solicitação demorou demais. Tente novamente.' : 'A página que você procura não existe.') }}</p>
+
+			<div class="actions">
+				<button class="btn btn-primary" (click)="tentarNovamente()">Tentar novamente</button>
+				<button class="btn btn-outline" (click)="voltarHome()">Voltar para início</button>
+			</div>
+		</div>
+	</div>
+</div>

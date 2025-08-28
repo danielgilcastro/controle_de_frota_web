@@ -1,0 +1,49 @@
+<div class="contato-page">
+	<div class="card">
+		<div class="card-header">
+			<h2>Fale conosco</h2>
+		</div>
+		<div class="card-body">
+			<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+				<div class="form-group">
+					<label class="form-label">Nome</label>
+					<input type="text" formControlName="nome" placeholder="Seu nome" [class.input-error]="submitted && f['nome'].invalid" />
+					<div class="error" *ngIf="submitted && f['nome'].errors">
+						<span *ngIf="f['nome'].errors['required']">Nome é obrigatório.</span>
+						<span *ngIf="f['nome'].errors['minlength']">Mínimo 2 caracteres.</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">E-mail</label>
+					<input type="email" formControlName="email" placeholder="seu@email.com" [class.input-error]="submitted && f['email'].invalid" />
+					<div class="error" *ngIf="submitted && f['email'].errors">
+						<span *ngIf="f['email'].errors['required']">E-mail é obrigatório.</span>
+						<span *ngIf="f['email'].errors['email']">E-mail inválido.</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Assunto</label>
+					<input type="text" formControlName="assunto" placeholder="Assunto" [class.input-error]="submitted && f['assunto'].invalid" />
+					<div class="error" *ngIf="submitted && f['assunto'].errors">
+						<span *ngIf="f['assunto'].errors['required']">Assunto é obrigatório.</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Mensagem</label>
+					<textarea rows="6" formControlName="mensagem" placeholder="Escreva sua mensagem" [class.input-error]="submitted && f['mensagem'].invalid"></textarea>
+					<div class="error" *ngIf="submitted && f['mensagem'].errors">
+						<span *ngIf="f['mensagem'].errors['required']">Mensagem é obrigatória.</span>
+						<span *ngIf="f['mensagem'].errors['minlength']">Mínimo 10 caracteres.</span>
+					</div>
+				</div>
+
+				<div class="actions">
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

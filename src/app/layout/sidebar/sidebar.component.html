@@ -1,7 +1,7 @@
 
 <div class="sidebar-wrapper" [class.open]="!hidden && !collapsed">
-  <div class="sidebar-backdrop" *ngIf="!hidden && !collapsed" (click)="sidebar.hide()"></div>
-  <aside class="card" [class.sidebar]="true" [class.sidebar--hidden]="hidden" [class.sidebar--collapsed]="collapsed">
+	<div class="sidebar-backdrop" *ngIf="!hidden && !collapsed" (click)="sidebar.hide()"></div>
+	<aside class="card sidebar" role="navigation" aria-label="Main menu" [attr.aria-hidden]="hidden" [class.sidebar--hidden]="hidden" [class.sidebar--collapsed]="collapsed">
 	<div class="card-header">Menu</div>
 	<div class="card-body">
 		<div class="sidebar__item active">
