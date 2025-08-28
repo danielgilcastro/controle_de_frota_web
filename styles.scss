@@ -1,30 +1,3 @@
-// Global styles entry (stable)
-// Use the variables file that lives in `src/styles/variables.scss`
-@use 'sass:color';
-@use './styles/variables' as *;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-/* Minimal reset and base tokens required by components */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body, app-root { height: 100%; font-size: $font-size-base; }
-
-body {
-  font-family: $font-family-base;
-  font-weight: $font-weight-normal;
-  line-height: $line-height-base;
-  color: $color-text;
-  background: $color-background;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Core card styles used by many components */
-.card { background: $color-background; border: 1px solid $color-border; border-radius: $radius-lg; }
-.card-header { padding: 1rem; border-bottom: 1px solid $color-border; background: $color-surface; }
-
-/* Small utility classes needed by layout */
-.text-muted { color: $color-muted; }
-.bg-surface { background: $color-surface; }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
