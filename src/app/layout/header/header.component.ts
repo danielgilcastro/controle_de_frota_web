@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SidebarService } from '../sidebar/sidebar.service';
+import { LoginService } from '../../service/login.service';
+
 
 @Component({
   selector: 'app-header',
@@ -11,12 +13,18 @@ import { SidebarService } from '../sidebar/sidebar.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-  constructor(public sidebar: SidebarService, private router: Router) {}
+export class HeaderComponent implements OnInit {
+   user: any = null;
+  constructor(public sidebar: SidebarService, private router: Router, private loginService: LoginService) {}
 
   // controla abertura do campo de pesquisa em mobile
   searchOpen = false;
 
+    ngOnInit(): void {
+    this.user = this.loginService.getUser();
+  }
+
+  
   toggleSearch() { this.searchOpen = !this.searchOpen; }
   
   // toggle called from mobile button: if opening, focus input; if already open, submit

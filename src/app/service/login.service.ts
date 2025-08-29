@@ -24,4 +24,9 @@ private baseUrl = 'http://localhost:3000';
     return this.http.post(`${this.baseUrl}/logout`, {});
   }
 
+  getUser() {
+  const user = localStorage.getItem('user');
+  return user ? JSON.parse(user) : null;
+}
+
 }
