@@ -1,0 +1,48 @@
+<div class="user-menu" [class.open]="open">
+  <button class="user-trigger btn btn-ghost" (click)="toggle()" aria-haspopup="true" [attr.aria-expanded]="open">
+  <span class="user-name">{{ (user?.role === 'despachante') ? 'Despachante' : ((user?.role === 'motorista') ? 'Motorista' : (user?.name || 'Usuário')) }}</span>
+    <svg class="caret" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <div class="menu-panel" *ngIf="open">
+    <div class="idcard">
+      <div class="idcard__top">
+        <div class="idcard__slot">
+          <img class="idcard__logo" src="/logotras.png" alt="Logo" />
+        </div>
+      </div>
+      <div class="idcard__avatar">
+        <ng-container *ngIf="user?.avatarUrl; else genericAvatar">
+          <img [src]="user?.avatarUrl" alt="Avatar" />
+        </ng-container>
+        <ng-template #genericAvatar>
+          <svg width="88" height="88" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="generic-avatar">
+            <defs>
+              <linearGradient id="g" x1="0" x2="1">
+                <stop offset="0" stop-color="#E6EEF8" />
+                <stop offset="1" stop-color="#D7E9FB" />
+              </linearGradient>
+            </defs>
+            <rect width="120" height="120" rx="60" fill="url(#g)" />
+            <g transform="translate(30,24)" fill="#9AAFC6">
+              <ellipse cx="30" cy="60" rx="30" ry="18" />
+              <circle cx="30" cy="28" r="22" />
+            </g>
+          </svg>
+        </ng-template>
+      </div>
+      <div class="idcard__body">
+        <div class="idcard__name">{{ user?.name || 'Nome do Funcionário' }}</div>
+        <div class="idcard__info">
+          <div><span class="label">Email</span><span class="value">{{ user?.email || '—' }}</span></div>
+          <div><span class="label">Matrícula</span><span class="value">{{ user?.matricula || '—' }}</span></div>
+          <div><span class="label">Lotação</span><span class="value">{{ user?.lotacao || '—' }}</span></div>
+          <div><span class="label">Função</span><span class="value">{{ user?.funcao || '—' }}</span></div>
+        </div>
+      </div>
+      <div class="id-card__actions">
+        <button class="btn btn-ghost" (click)="logout()">Sair</button>
+      </div>
+    </div>
+  </div>
+</div>

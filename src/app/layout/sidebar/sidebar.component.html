@@ -1,29 +1,56 @@
+<aside class="sidebar" [class.hidden]="sidebar.hiddenValue" [class.collapsed]="sidebar.collapsedValue" role="navigation" aria-label="Menu principal">
+		<div class="sidebar__inner">
 
-<div class="sidebar-wrapper" [class.open]="!hidden && !collapsed">
-	<div class="sidebar-backdrop" *ngIf="!hidden && !collapsed" (click)="sidebar.hide()"></div>
-	<aside class="card sidebar" role="navigation" aria-label="Main menu" [attr.aria-hidden]="hidden" [class.sidebar--hidden]="hidden" [class.sidebar--collapsed]="collapsed">
-	<div class="card-header">Menu</div>
-	<div class="card-body">
-		<div class="sidebar__item active">
-			<span class="sidebar__icon">🏠</span>
-			<span class="sidebar__label">Dashboard</span>
+			<ul class="sidebar__menu">
+				<li>
+					<a routerLink="/" routerLinkActive="active" (click)="closeIfMobile()">
+						<!-- home icon -->
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11.5L12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8.5z" fill="currentColor"/></svg>
+						<span class="label">Início</span>
+					</a>
+				</li>
+				<li>
+					<a routerLink="/veiculos" routerLinkActive="active" (click)="closeIfMobile()">
+						<!-- vehicle icon -->
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 13v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h10v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-3l-1.5-4A2 2 0 0 0 16.6 7H7.4a2 2 0 0 0-1.9 1L3 13zM6 18a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm12 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill="currentColor"/></svg>
+						<span class="label">Veículos</span>
+					</a>
+				</li>
+				<li>
+					<a routerLink="/motoristas" routerLinkActive="active" (click)="closeIfMobile()">
+						<!-- user icon -->
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 4v2h16v-2c0-2-4-4-8-4z" fill="currentColor"/></svg>
+						<span class="label">Motoristas</span>
+					</a>
+				</li>
+				<li>
+					<a routerLink="/relatorios" routerLinkActive="active" (click)="closeIfMobile()">
+						<!-- report icon -->
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h18v18H3V3zm5 14h10v-2H8v2zm0-4h10v-2H8v2zm0-4h10V7H8v2z" fill="currentColor"/></svg>
+						<span class="label">Relatórios</span>
+					</a>
+				</li>
+			</ul>
+
+				<div class="sidebar__footer">
+					<button
+						class="btn btn-ghost collapse-btn"
+						(click)="sidebar.toggle()"
+						[attr.aria-label]="sidebar.collapsedValue ? 'Expandir menu' : 'Recolher menu'"
+						[class.collapsed]="sidebar.collapsedValue"
+						title="Recolher/Expandir menu">
+								<!-- two chevrons: left for 'close', right for 'open' -->
+								<svg class="arrow-left" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+									<path d="M15.41 7.41L10.83 12l4.58 4.59L14 18l-6-6 6-6z" fill="currentColor" />
+								</svg>
+								<svg class="arrow-right" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+									<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" fill="currentColor" />
+								</svg>
+					</button>
+				</div>
 		</div>
-		<div class="sidebar__item">
-			<span class="sidebar__icon">🚗</span>
-			<span class="sidebar__label">Veículos</span>
-		</div>
-		<div class="sidebar__item">
-			<span class="sidebar__icon">👤</span>
-			<span class="sidebar__label">Motoristas</span>
-		</div>
-		<div class="sidebar__item">
-			<span class="sidebar__icon">🗺️</span>
-			<span class="sidebar__label">Rotas</span>
-		</div>
-		<div class="sidebar__item">
-			<span class="sidebar__icon">📊</span>
-			<span class="sidebar__label">Relatórios</span>
-		</div>
-	</div>
-  </aside>
-</div>
+
+	<!-- backdrop for mobile when the sidebar is visible -->
+		<div class="sidebar-backdrop" *ngIf="!sidebar.hiddenValue && isMobile" (click)="sidebar.hide()" aria-hidden="true"></div>
+</aside>
+

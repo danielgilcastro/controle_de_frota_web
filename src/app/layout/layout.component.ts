@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { HeaderComponent } from "./header/header.component";
+
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [SidebarComponent, HeaderComponent, RouterOutlet],
+  imports: [ RouterOutlet, HeaderComponent, SidebarComponent],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })

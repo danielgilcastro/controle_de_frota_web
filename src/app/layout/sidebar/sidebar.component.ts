@@ -1,28 +1,30 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarService } from './sidebar.service';
-import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-sidebar',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+	selector: 'app-sidebar',
+	standalone: true,
+	imports: [CommonModule],
+	templateUrl: './sidebar.component.html',
+	styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit, OnDestroy {
-  private subs: Subscription[] = [];
+export class SidebarComponent implements OnInit {
+	constructor(public sidebar: SidebarService) {}
 
-  constructor(public sidebar: SidebarService) {}
+	ngOnInit(): void {
+		// Guarantee sidebar is shown on desktop (helps when localStorage stored hidden)
+		if (!this.isMobile) {
+			this.sidebar.show();
+		}
+	}
 
-  // flags usadas nas bindings do template
-  hidden = false;
-  collapsed = false;
+	closeIfMobile() {
+		if (this.isMobile) this.sidebar.hide();
+	}
 
-  ngOnInit(): void {
-  this.subs.push(this.sidebar.hidden$.subscribe(v => { this.hidden = v; }));
-  this.subs.push(this.sidebar.collapsed$.subscribe(v => { this.collapsed = v; }));
-  }
-
-  ngOnDestroy(): void { this.subs.forEach(s => s.unsubscribe()); }
+	get isMobile() {
+		return window.innerWidth <= 768;
+	}
 }
+
