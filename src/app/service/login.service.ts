@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of, throwError } from 'rxjs';
+
+
 
 
 @Injectable({
@@ -11,7 +14,10 @@ private baseUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
 
   login(login: string, password: string) {
-    return this.http.post(`${this.baseUrl}/login`, { login, password });
+   if(login === 'admin' && password === '123456'){
+    return of({ token: 'fake-jwt-token', user: { login: 'admin', role: 'admin' } });
+  }
+  return throwError(() => new Error('Credenciais inválidas'));
   }
 
   logout() {

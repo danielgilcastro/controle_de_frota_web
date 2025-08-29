@@ -66,4 +66,11 @@ export class HeaderComponent {
   }
   hideSidebar() { this.sidebar.hide(); }
   showSidebar() { this.sidebar.show(); }
+
+    logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
 }
+

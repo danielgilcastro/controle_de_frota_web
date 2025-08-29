@@ -17,10 +17,9 @@
 			<span *ngIf="!sidebar.hiddenValue && sidebar.collapsedValue">[sidebar: collapsed]</span>
 			<span *ngIf="!sidebar.hiddenValue && !sidebar.collapsedValue">[sidebar: visible]</span>
 		</div>
-		<!-- mobile search toggle -->
-		<button class="btn btn-ghost mobile-search-toggle" (click)="toggleSearchMobile(searchInput)" aria-label="Pesquisar">
-			🔍
-		</button>
+			
+			<button class="btn btn-primary">Novo</button>
+	
 
 		<!-- input always in DOM; visibility on mobile controlled by .search-open on header -->
 		<div class="search-container">
@@ -31,6 +30,6 @@
 			</button>
 			<button class="btn btn-ghost search-submit" (click)="submitSearch()" aria-label="Enviar pesquisa">🔍</button>
 		</div>
-		<button class="btn btn-primary">Novo</button>
+		<button class=" btn btn-logout" (click)="logout()">🚪 Sair</button>
 	</div>
 </header>

@@ -1,20 +1,37 @@
 <div class="form-group login">
-  <form>
-    <label class="form-label" for="username">Usuário:</label>
-    <input class="input" type="text" id="username" name="username" required />
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label class="form-label" for="login">Usuário:</label>
+    <input
+      class="input"
+      type="text"
+      id="login"
+      formControlName="login"
+      placeholder="Digite seu usuário"
+    />
+    <div *ngIf="loginForm.get('login')?.invalid && loginForm.get('login')?.touched" class="error">
+      Usuário é obrigatório.
+    </div>
 
     <label class="form-label" for="password">Senha:</label>
     <input
       class="input"
       type="password"
       id="password"
-      name="password"
-      required
+      formControlName="password"
+      placeholder="Digite sua senha"
     />
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+      Senha é obrigatória (mínimo 6 caracteres).
+    </div>
 
-    <button type="submit" class="btn btn-primary btn-large">Login</button>
-    <p class="link-create-account">não tem Conta? <a routerLink="/criar-conta">clique aqui!</a></p>
+    <button type="submit" class="btn btn-primary btn-large">
+      Login
+    </button>
+
+    <p class="link-create-account">
+      Não tem conta? <a routerLink="/criar-conta">clique aqui!</a>
+    </p>
   </form>
+
+  <p *ngIf="errorMessage" class="error login-error">{{ errorMessage }}</p>
 </div>
-
-
